@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}User Detail{% endblock %}
+
+{% block content %}
+  <h1>{{ user.full_name }}</h1>
+  <img src="{{ user.image_url }}" alt="Profile image" width="150" class="mb-3">
+
+  <div>
+    <a class="btn btn-warning" href="{{ url_for('show_edit_form', user_id=user.id) }}">Edit</a>
+
+    <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" style="display:inline;">
+      <button class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+
+  <a class="btn btn-link" href="{{ url_for('list_users') }}">Back to list</a>
+{% endblock %}
